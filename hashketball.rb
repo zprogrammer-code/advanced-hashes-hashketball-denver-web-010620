@@ -145,15 +145,23 @@ end
 
 def team_names
   teams = []
-  game_hash{ |key, value|
+  game_hash.map{ |key, value|
   teams << value[:team_name]
-  } 
-  binding.pry
+ } 
   return teams
 end
 
-
-
+def player_numbers(name)
+  jerseys = []
+  game_hash.map{ |key, value|
+  value[:players].map{ |numbers|
+  if value[:team_name] == name
+jerseys << numbers[:number]
+end
+  }
+}
+return jerseys
+end 
 
 
 
