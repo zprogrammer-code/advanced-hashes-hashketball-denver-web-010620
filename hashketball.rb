@@ -163,6 +163,41 @@ end
 return jerseys
 end 
 
+def player_stats(name)
+  game_hash.map{ |key, value|
+  value[:players].map{ |stats|
+  if stats[:player_name] == name
+    stats.delete(:player_name)
+    return stats
+  end
+     }
+  } 
+end 
+
+def big_shoe_rebounds
+   game_hash.map{ |key, value|
+  value[:players].map{ |stats|
+  if stats[:shoe] >= 19
+    return stats[:rebounds]
+  end
+     }
+  } 
+end 
+
+def most_points_scored
+     game_hash.map{ |key, value|
+  value[:players].map{ |stats|
+  if stats[:points] >= 33
+    return stats[:player_name]
+  end
+     }
+  } 
+end 
+
+def winning_team
+  
+end 
+
 
 
 
