@@ -58,7 +58,7 @@ def game_hash
     },
     :away => {
        :team_name => "Charlotte Hornets",
-      :colors => ["Turqouise", "Purple"],
+      :colors => ["Turquoise", "Purple"],
       :players => [{
            :player_name => "Jeff Adrien",
         :number => 4,
@@ -134,6 +134,23 @@ def shoe_size(name)
   }
   }
 end 
+
+def team_colors(team)
+  game_hash.map{ |key, value|
+  if value[:team_name] == team 
+    return value[:colors]
+  end 
+  }
+end
+
+def team_names
+  teams = []
+  game_hash{ |key, value|
+  teams << value[:team_name]
+  } 
+  binding.pry
+  return teams
+end
 
 
 
