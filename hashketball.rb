@@ -218,6 +218,26 @@ else total2 > total
  end
 end 
 
+def player_with_longest_name
+  game_hash.map{ |key, value|
+  value[:players].map{ |stats|
+  if stats[:player_name].size >= 15
+     return stats[:player_name]
+   end
+     }
+  }
+end 
+
+def long_name_steals_a_ton?
+   game_hash.map{ |key, value|
+  value[:players].map{ |stats|
+  if stats[:player_name].size >= 15 && stats[:steals] >= 22
+     return true
+   end
+     }
+  }
+end 
+
 
 
 
