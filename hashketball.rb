@@ -195,7 +195,27 @@ def most_points_scored
 end 
 
 def winning_team
-  
+  i = 0 
+  total = 0
+  total2 =0
+  home_stats = game_hash[:home][:players]
+  while i < home_stats.length do
+    total += home_stats[i][:points]
+  i += 1 
+end
+a= 0 
+away_stats = game_hash[:away][:players]
+while a < away_stats.length do
+  total2 += away_stats[a][:points]
+  a += 1 
+end
+
+if total > total2
+  return game_hash[:home][:team_name]
+else total2 > total
+  return game_hash[:away][:team_name]
+ 
+ end
 end 
 
 
