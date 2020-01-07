@@ -115,7 +115,7 @@ def game_hash
 end 
 
 def num_points_scored(name)
-  player = game_hash[:home][:players][0][:player_name]
+  #player = game_hash[:home][:players][0][:player_name]
   game_hash.map{ |key, value|
   value[:players].map{ |player|
   if player[:player_name] == name
@@ -156,7 +156,7 @@ def player_numbers(name)
   game_hash.map{ |key, value|
   value[:players].map{ |numbers|
   if value[:team_name] == name
-jerseys << numbers[:number]
+  jerseys << numbers[:number]
 end
   }
 }
@@ -175,23 +175,31 @@ def player_stats(name)
 end 
 
 def big_shoe_rebounds
+  biggest_shoe = 0
+  biggest_shoe_rebounds = 0
    game_hash.map{ |key, value|
   value[:players].map{ |stats|
-  if stats[:shoe] >= 19
-    return stats[:rebounds]
-  end
+  if biggest_shoe < stats[:shoe] 
+    biggest_shoe = stats[:shoe]
+    biggest_shoe_rebounds = stats[:rebounds]
+    end
      }
   } 
+  biggest_shoe_rebounds
 end 
 
 def most_points_scored
-     game_hash.map{ |key, value|
+     highest_points = 0
+     highest_points_name = ""
+      game_hash.map{ |key, value|
   value[:players].map{ |stats|
-  if stats[:points] >= 33
-    return stats[:player_name]
+  if highest_points < stats[:points] 
+    highest_points = stats[:points]
+    highest_points_name = stats[:player_name]
   end
      }
   } 
+  highest_points_name
 end 
 
 def winning_team
